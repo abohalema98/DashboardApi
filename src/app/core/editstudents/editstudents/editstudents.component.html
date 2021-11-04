@@ -1,0 +1,32 @@
+<!-- Data section  -->
+<section class="p-5 bg-light h-100">
+  <div class="continer">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10 bg-light">
+        <div class="form-group form text-center fadeInDown">
+          <form class="p-3 g-3 needs-validation" (ngSubmit)="OnSubmit()" [formGroup]="editForm" novalidate> 
+            <p for="Name" class="text-center h3 lead">Edit Student</p>
+            <input type="text" class="form-control" aria-describedby="helpId" value="{{currentId}}" disabled>
+            <input type="text" class="form-control" placeholder="Name" aria-describedby="helpId" formControlName="name" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <input type="text" class="form-control" placeholder="Age" aria-describedby="helpId" formControlName="age" required >
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <a routerLink="/" class="btn btn-secondary btn-sm mt-5">Close</a>
+            <input  value="Confirm" class="btn btn-success btn-sm mt-5">
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Data section  -->
+<router-outlet></router-outlet>
+
+
+

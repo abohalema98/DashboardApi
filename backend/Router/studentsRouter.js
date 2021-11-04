@@ -33,20 +33,16 @@ studentsRouter.route("/studentsInfo")
             });
     })
 
-    .put((request, response) => {
-        // let modifyUser = Students.find({ _id: request.body.id })
-
+    .put(async (request, response) => {
+        const Id = await request.body.id;
+        const Name = await request.body.name;
+        const Age = await request.body.age;
 
         const updateStudent = new Students({
-            name: request.body.name,
-            age: request.body.age,
+            name: Name,
+            age: Age,
         })
-        // Students.updateOne({ _id: request.body.id }, {
-        //     $set: {
-        //         name: request.body.name,
-        //     }
-        // })
-        Students.updateOne({ _id: request.body.id }, updateStudent)
+        Students.updateOne({ _id: Id }, updateStudent)
             .then((result) => { response.status(200).json({ message: "Update successful!" }) })
             .catch((err) => { throw new Error(err) })
 
@@ -56,6 +52,14 @@ studentsRouter.route("/studentsInfo")
         await Students.deleteOne({ _id: request.body.id })
             .then((data) => { response.status(200).json(data) })
             .catch((err) => { throw new Error(err) })
-    }); // Delete 
+    }) // Delete 
+
+studentsRouter.get("/studentsInfo/:id?", (request, response) => {
+    Students.findOne({ _id: request.params.id })
+        .then((result) => { response.status(200).json(result) })
+        .catch((err) => { throw new Error(err) })
+
+})
+
 
 module.exports = studentsRouter;
