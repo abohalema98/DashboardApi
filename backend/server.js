@@ -32,5 +32,5 @@ server.use("/api", StudentsRouter);
 const port = process.env.port;
 
 server.listen(port, () => {
-  console.log("server is lisent on port 3300");
+  console.log("server is lisent");
 });
